@@ -1,0 +1,21 @@
+{
+	"id": "8a0583aa-bb30-4bc0-acab-e6a600ec489b",
+	"name": "Delivery",
+	"values": [
+		{
+			"key": "driver-id",
+			"value": "e9a76b83-b6bf-4e21-8368-767a48a0592f",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "truck-id",
+			"value": "123e4567-e89b-12d3-a456-426614174000",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2023-03-12T09:58:00.264Z",
+	"_postman_exported_using": "Postman/9.31.26"
+}
