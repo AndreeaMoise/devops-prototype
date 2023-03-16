@@ -83,7 +83,7 @@ const login = (image, callback) => {
 	axios.post(`${apiUrl}/verifyUser`, {
 		image: image
 	}).then(response => {
-		driverId = response.data.id;
+		driverId = JSON.parse(response.data.id);
 		callback();
 	}).catch(error => console.error(error));
 };

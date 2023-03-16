@@ -12,8 +12,7 @@ exports.verifyUser = async function (req, res, next) {
 exports.identification = async function (req, res, next) {
     try {
         var response = await TrackingService.identification(req.body);
-        // #TODO
-        return res.status(response.status).json({ data: response });
+        return res.status(response.status).json();
     } catch (e) {
         return res.status(500).json({ status: 500, message: "Cannot store identification" });
     }
