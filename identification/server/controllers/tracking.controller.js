@@ -3,7 +3,7 @@ var TrackingService = require('../services/tracking.service')
 exports.verifyUser = async function (req, res, next) {
     try {
         var response = await TrackingService.verifyUser(req.body.image);
-        return res.status(response.status).json({ data: response.id });
+        return res.status(response.status).json({ id: response.id });
     } catch (e) {
         return res.status(500).json({ status: 500, message: "Cannot verify user" });
     }
