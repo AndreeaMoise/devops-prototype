@@ -62,3 +62,7 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+
+/identification/server/node_modules/
+/.idea/
