@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +9,40 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <script src="index.js"></script>
-    <script src="libs/js/axios.min.js"></script>
-    
     <form action="" id="verify-image" method="post" class="form-example">
         <input type="file" name="image" alt="Upload selfie" accept="image/jpeg, image/png, image/jpg">
-        
+
         <input type="submit" value="Authenticate">
     </form>
-    
-    
+
+    <div id="identification">
+        <h1 id="greetings">Hello, <span id="driverName">driver</span></h1>
+        <h2 style="display: inline-flex;">Location:
+            <span id="location">
+                Lat: <span id="locationLat"></span>, Lon: <span id="locationLon"></span>
+            </span>
+        </h2>
+        <div class="info">
+            <div id="truckInfo">Truck: <span id="truckId"></span></div>
+            <div id="loadInfo">Load:
+                <table id="tableLoad" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>SKU</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableLoadBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <input id="sendTrace" type="button" value="Send data">
+
+    <script src="config.js"></script>
+    <script src="index.js"></script>
+    <script src="libs/js/axios.min.js"></script>
 </body>
 </html>
