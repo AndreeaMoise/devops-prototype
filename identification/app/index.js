@@ -92,7 +92,7 @@ const sendTrace = () => {
 	const payload = {
 		"driverId": driverId,
 		"truckId": truckId,
-		"location": location,
+		"location": driverLocation,
 		"load": load
 	};
 
