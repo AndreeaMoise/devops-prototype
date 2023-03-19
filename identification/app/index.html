@@ -38,13 +38,13 @@
                                         Upload photo
                                     </span>
                                 </span>
-                                <span class="file-name">
+                                <span id="fileName" class="file-name">
                                     Acceptable: jpeg, png
                                 </span>
                             </label>
                         </div>
 
-                        <input class="button is-primary" type="submit" value="Authenticate">
+                        <button id="btnAuthenticate" class="button is-primary" type="submit">Authenticate</button>
                     </form>
                 </article>
                 <article class="tile is-child box">
@@ -88,12 +88,18 @@
                             </table>
                             </p>
                         </div>
-                        <input class="button is-link" id="sendTrace" type="button" value="Send data">
+                        <button class="button is-link" id="sendTrace" type="button">Send data</button>
                     </div>
                 </article>
             </div>
         </div>
     </div>
+
+    <div id="traceNotification" class="notification is-primary is-light">
+        <button class="delete"></button>
+        The trace was recored!
+    </div>
+
     <footer class="footer">
         <div class="content has-text-centered">
             <p>

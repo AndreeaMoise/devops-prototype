@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			fileReader.onload = () => {
 				const srcData = fileReader.result;
 				base64 = getBase64String(srcData);
+				changeInnerHtml("fileName", selectedfile[0].name);
 			};
 			fileReader.readAsDataURL(imageFile);
 		}
@@ -47,10 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	form.addEventListener("submit", async (event) => {
 		event.preventDefault();
+		showLoader("btnAuthenticate");
 		login(base64, loggedIn);
 	});
 
 	document.querySelector("#sendTrace").addEventListener("click", sendTrace);
+
+	(document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+		const notification = $delete.parentNode;
+		$delete.addEventListener('click', () => hide(notification.id));
+	});
 })
 
 const getLocation = () => {
@@ -71,7 +78,7 @@ const onGetLocationSuccess = (position) => {
 }
 
 const showPosition = () => {
-	hide("location");	
+	hide("location");
 	setTimeout(() => {
 		changeInnerHtml("locationLat", driverLocation.latitude);
 		changeInnerHtml("locationLon", driverLocation.longitude);
@@ -85,7 +92,10 @@ const login = (image, callback) => {
 	}).then(response => {
 		driverId = JSON.parse(response.data.id);
 		callback();
-	}).catch(error => console.error(error));
+	}).catch(error => {
+		console.error(error);
+		hideLoader("btnAuthenticate");
+	});
 };
 
 const sendTrace = () => {
@@ -96,9 +106,15 @@ const sendTrace = () => {
 		"load": load
 	};
 
+	showLoader("sendTrace");
 	axios.post(`${apiUrl}/identification`, payload).then(response => {
 		console.log(response);
-	}).catch(error => console.error(error));
+		hideLoader("sendTrace");
+		show("traceNotification");
+	}).catch(error => {
+		hideLoader("sendTrace");
+		console.error(error);
+	});
 }
 
 const loggedIn = () => {
@@ -107,6 +123,7 @@ const loggedIn = () => {
 	populateLoad();
 	getLocation();
 	setInterval(getLocation, 5000);
+	hideLoader("btnAuthenticate");
 }
 
 const populateLoad = () => {
@@ -125,3 +142,5 @@ const getBase64String = (dataUrl) => dataUrl.split(',')[1];
 const changeInnerHtml = (id, text) => document.getElementById(id).innerHTML = text;
 const show = (id) => document.getElementById(id).style.display = "block";
 const hide = (id) => document.getElementById(id).style.display = "none";
+const showLoader = (id) => document.getElementById(id).className += " is-loading";
+const hideLoader = (id) => document.getElementById(id).classList.remove("is-loading");

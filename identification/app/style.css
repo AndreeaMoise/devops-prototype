@@ -13,8 +13,15 @@ body {
     margin: 16px 0;
 }
 
+#traceNotification,
 #identification {
-    /* display: none; */
+    display: none;
+}
+
+#traceNotification {
+    position: absolute;
+    top: 6vh;
+    right: 0;
 }
 
 #verify-image {     
