@@ -29,13 +29,13 @@ def lambda_handler(event, context):
             
         face = dynamodb.get_item(
             TableName='facerecognition',  
-            Key={'RekognitionId': {'S': match['Face']['FaceId']}}
+            Key={'rekognitionId': {'S': match['Face']['FaceId']}}
             )
         
         if 'Item' in face:
             return {
                 'statusCode': 200,
-                'body': json.dumps(face['Item']['UserId']['S'])
+                'body': json.dumps(face['Item']['userId']['S'])
             }
            
     return {
