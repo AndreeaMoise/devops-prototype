@@ -8,41 +8,103 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="libs/css/bulma.min.css">
 </head>
 
 <body>
-    <form action="" id="verify-image" method="post" class="form-example">
-        <input type="file" name="image" alt="Upload selfie" accept="image/jpeg, image/png, image/jpg">
+    <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <strong>Demo</strong>
+            </a>
+        </div>
+    </nav>
+    <div class="tile is-ancestor main-container">
+        <div class="tile is-vertical">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title">Authenticate</p>
+                    <form action="" id="verify-image" method="post" class="form-example">
+                        <div class="file is-link has-name">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="image" alt="Upload selfie"
+                                    accept="image/jpeg, image/png, image/jpg">
 
-        <input type="submit" value="Authenticate">
-    </form>
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Upload photo
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    Acceptable: jpeg, png
+                                </span>
+                            </label>
+                        </div>
 
-    <div id="identification">
-        <h1 id="greetings">Hello, <span id="driverName">driver</span></h1>
-        <h2 style="display: inline-flex;">Location:
-            <span id="location">
-                Lat: <span id="locationLat"></span>, Lon: <span id="locationLon"></span>
-            </span>
-        </h2>
-        <div class="info">
-            <div id="truckInfo">Truck: <span id="truckId"></span></div>
-            <div id="loadInfo">Load:
-                <table id="tableLoad" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>SKU</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableLoadBody"></tbody>
-                </table>
+                        <input class="button is-primary" type="submit" value="Authenticate">
+                    </form>
+                </article>
+                <article class="tile is-child box">
+                    <div class="content">
+                        <p class="title">Information</p>
+                        <p class="subtitle">Demo of driver verification and tracing</p>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat
+                                pulvinar,
+                                at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero
+                                rhoncus
+                                ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio
+                                felis ut quam.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title">Send your trace</p>
+                    <div id="identification">
+                        <p class="subtitle is-4" id="greetings">Hello, <strong id="driverName">driver</strong></p>
+                        <p class="subtitle is-5 location-container"><strong>Location: </strong>
+                            <span id="location">
+                                Lat: <span id="locationLat"></span>, Lon: <span id="locationLon"></span>
+                            </span>
+                        </p>
+                        <div class="info">
+                            <p class="subtitle is-5" id="truckInfo"><strong>Truck:</strong> <span id="truckId"></span>
+                            </p>
+                            <p class="subtitle is-5" id="loadInfo"><strong>Load:</strong>
+                            <table class="table" id="tableLoad">
+                                <thead>
+                                    <tr>
+                                        <th>SKU</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableLoadBody"></tbody>
+                            </table>
+                            </p>
+                        </div>
+                        <input class="button is-link" id="sendTrace" type="button" value="Send data">
+                    </div>
+                </article>
             </div>
         </div>
     </div>
-    <input id="sendTrace" type="button" value="Send data">
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                Project of Group 8 for the <strong>DevOps and Cloud-based Software</strong> course
+            </p>
+        </div>
+    </footer>
 
     <script src="config.js"></script>
     <script src="index.js"></script>
     <script src="libs/js/axios.min.js"></script>
 </body>
+
 </html>
