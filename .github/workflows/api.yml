@@ -9,6 +9,8 @@ on:
 env:
   PORT: 8080
   DOCKER_TAG: tracking/server
+  IMAGE_NAME: delivery_service
+  REPO_NAME: andreeam97
   
 jobs:
   build-api:
@@ -37,10 +39,32 @@ jobs:
 #     - name: Output summary to console
 #       run: echo ${{ steps.run-newman.outputs.summary }}
 
-    - name: Deploy to AWS
-      uses: easingthemes/ssh-deploy@main
+    - name: Login to Container Registry
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - name: Push image to docker hub Container Registry
+      run: | 
+          docker push $REPO_NAME/$IMAGE_NAME
+          
+    - name: Configure SSH
+      run: | 
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/github-actions-key
+          chmod 600 ~/.ssh/github-actions-key
+          cat >>~/.ssh/config <<END
+          Host ec2
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/github-actions-key
+            StrictHostKeyChecking no
+          END
       env:
-        SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
-        REMOTE_HOST: ${ { secrets.HOST_DNS }}
-        REMOTE_USER: ${ { secrets.USERNAME }}
-        TARGET: ${ { secrets.TARGET_DIR }}
+          SSH_HOST: ${{ env.HOST_DNS }}
+          SSH_USER: ${{ env.USERNAME }}
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }} 
+      
+    - name: Run docker image in AWS
+      run: ssh ec2 'docker run --env PORT=$PORT -p $PORT:$PORT -d $REPO_NAME/$IMAGE_NAME:latest'
