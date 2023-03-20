@@ -8,7 +8,6 @@ on:
       - identification/server/**
 env:
   PORT: 8080
-  DOCKER_TAG: tracking/server
   IMAGE_NAME: delivery_service
   REPO_NAME: andreeam97
   
@@ -67,4 +66,5 @@ jobs:
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }} 
       
     - name: Run docker image in AWS
-      run: ssh ec2 'docker run --env PORT=${{PORT}} -p ${{PORT}}:${{PORT}} -d ${{REPO_NAME}}/${{IMAGE_NAME}}:latest'
+#       run: ssh ec2 'docker run --env PORT=${{PORT}} -p ${{PORT}}:${{PORT}} -d ${{REPO_NAME}}/${{IMAGE_NAME}}:latest'
+      run: ssh ec2 'docker run --env PORT=8080 -p 8080:8080 -d andreeam97/delivery_service:latest'
