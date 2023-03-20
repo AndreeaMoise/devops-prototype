@@ -67,4 +67,4 @@ jobs:
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }} 
       
     - name: Run docker image in AWS
-      run: ssh ec2 'docker run --env PORT=$PORT -p $PORT:$PORT -d $REPO_NAME/$IMAGE_NAME:latest'
+      run: ssh ec2 'docker run --env PORT=${PORT} -p ${PORT}:${PORT} -d ${REPO_NAME}/${IMAGE_NAME}:latest'
