@@ -62,8 +62,8 @@ jobs:
             StrictHostKeyChecking no
           END
       env:
-          SSH_HOST: ${{ env.HOST_DNS }}
-          SSH_USER: ${{ env.USERNAME }}
+          SSH_HOST: ${{ secrets.HOST_DNS }}
+          SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }} 
       
     - name: Run docker image in AWS
