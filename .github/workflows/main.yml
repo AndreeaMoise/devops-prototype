@@ -1,5 +1,4 @@
 name: Build Test and push
-on: [push]
 env:
   IMAGE_NAME: delivery_service
   REPO_NAME: andreeam97
