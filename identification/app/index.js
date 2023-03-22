@@ -95,6 +95,7 @@ const login = (image, callback) => {
 	}).catch(error => {
 		console.error(error);
 		hideLoader("btnAuthenticate");
+		show("authErrorNotification");
 	});
 };
 

@@ -14,10 +14,12 @@ body {
 }
 
 #traceNotification,
+#authErrorNotification,
 #identification {
     display: none;
 }
 
+#authErrorNotification,
 #traceNotification {
     position: absolute;
     top: 6vh;
