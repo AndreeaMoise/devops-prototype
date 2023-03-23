@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.location-container {
+    display: inline-flex;
+}
+
+.table {
+    width: 100%;
+    margin: 16px 0;
+}
+
+#traceNotification,
+#authErrorNotification,
+#identification {
+    display: none;
+}
+
+#authErrorNotification,
+#traceNotification {
+    position: absolute;
+    top: 6vh;
+    right: 0;
+}
+
+#verify-image {     
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#verify-image > .file > label {
+    width: 100%;
+}
+
+#verify-image > .file > label > .file-name {
+    max-width: unset;
+    width: 100%;
+}
+
+.main-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.footer {
+    padding: 2rem !important;
+}
