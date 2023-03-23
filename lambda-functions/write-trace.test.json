@@ -1,0 +1,18 @@
+{
+  "driverId": "value1",
+  "truckId": "value2",
+  "load": [
+        {
+          "sku": "123",
+          "quantity": 3
+        },   
+        {
+          "sku": "124",
+          "quantity": 3
+        } 
+    ],
+    "location": {
+        "latitude": "29° 52' N",
+        "longitude": "2° 29' E"
+    }
+}
